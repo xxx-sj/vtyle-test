@@ -15,7 +15,6 @@ services:
       - "3000:${APP_PORT}"
     volumes:
       - .:/usr/src/app
-    command: npm run start:dev
 
   mongo:
     image: mongo:latest
