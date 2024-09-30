@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Query } from '@nestjs/common';
 import { ProfilesService } from '@app/api/profiles/profiles.service';
 import { PaginationDto } from '@app/common/dto/Pagination.dto';
 import { TransformDto } from '@app/common/interceptors/response/decorators/transform-dto.decorator';
@@ -12,15 +12,13 @@ export class ProfilesController {
 
   @Get('rated-me')
   @TransformDto(UserProfileResponseDto)
-  async getRaters(@Query() paginationDto: PaginationDto) {
-    const userId = '66f36956de19c31261a58524';
+  async getRaters(@Query() paginationDto: PaginationDto, @Param() userId: string) {
     return await this.service.getRaters(paginationDto, userId);
   }
 
   @Get('rated')
   @TransformDto(UserProfileResponseDto)
-  async getRatedUsers(@Query() paginationDto: PaginationDto) {
-    const userId = '66f36a18de19c31261a5853b';
+  async getRatedUsers(@Query() paginationDto: PaginationDto, @Param() userId: string) {
     return await this.service.getRatedUsers(paginationDto, userId);
   }
 

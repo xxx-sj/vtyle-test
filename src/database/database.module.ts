@@ -16,12 +16,15 @@ import { MongooseModule } from '@nestjs/mongoose';
         const appConfig = config.get<AppConfig>('app');
         const { env } = appConfig;
 
-        const uri = `mongodb://${host}:${port}/${name}`;
-        // const uri: string =
-        //   env === 'development' || env === 'production'
-        //     ? `mongodb+srv://${encodeURIComponent(user)}:${encodeURIComponent(password)}@${host}/${name}${options}`
-        //     : `mongodb://${host}:${port}/${name}`;
+        console.log({ env });
 
+        // const uri = `mongodb://${host}:${port}/${name}`;
+        const uri: string =
+          env === 'development' || env === 'production'
+            ? `mongodb+srv://${encodeURIComponent(user)}:${encodeURIComponent(password)}@${host}/${name}${options}`
+            : `mongodb://${host}:${port}/${name}`;
+
+        console.log( {uri} );
         return {
           uri,
           autoIndex: false,
