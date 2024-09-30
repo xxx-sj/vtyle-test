@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Query } from '@nestjs/common';
 import { ProfilesRepository } from '@app/api/profiles/profiles.repository';
 import { PaginationDto } from '@app/common/dto/Pagination.dto';
 import { ProfileEvaluationsRepository } from '@app/api/profiles/modules/profile-evaluations/profile-evaluations.repository';
@@ -14,7 +14,7 @@ export class ProfilesService {
     private readonly profileEvaluationRepository: ProfileEvaluationsRepository,
   ) {}
 
-  async getRaters(paginationDto: PaginationDto, userId: string) {
+  async getRaters(paginationDto: PaginationDto, @Query() userId: string) {
     const { page = 1, limit = 10 } = paginationDto;
     const skip = (page - 1) * limit;
 
@@ -29,7 +29,7 @@ export class ProfilesService {
     });
   }
 
-  async getRatedUsers(paginationDto: PaginationDto, userId: string) {
+  async getRatedUsers(paginationDto: PaginationDto, @Query() userId: string) {
     const { page = 1, limit = 10 } = paginationDto;
     const skip = (page - 1) * limit;
 
