@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateFriendRequestDto } from '@app/api/users/module/friend-request/module/create-friend-request.dto';
+import { CreateFriendRequestDto } from '@app/api/users/module/friend-request/dto/create-friend-request.dto';
 import { FriendRequestRepository } from '@app/api/users/module/friend-request/friend-request.repository';
 
 @Injectable()

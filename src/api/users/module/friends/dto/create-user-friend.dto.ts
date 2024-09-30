@@ -1,4 +1,4 @@
 export class CreateUserFriendDto {
-  userId?: string;
+  userId: string;
   friendId: string;
 }

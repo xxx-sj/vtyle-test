@@ -23,17 +23,7 @@ export class UserFriendsService {
   }
 
   //TODO
-  async create(userId: string) {
-    const documents = [];
-    for (let i = 0; i < 10; i++) {
-      const createUserFriendDto = new CreateUserFriendDto();
-      createUserFriendDto.friendId = new Types.ObjectId().toString();
-      createUserFriendDto.userId = userId;
-
-      documents.push(createUserFriendDto);
-    }
-
-    const result = await this.repository.insertMany(documents);
-    console.log({ result });
+  async create(dto: CreateUserFriendDto) {
+    await this.repository.create(dto);
   }
 }
