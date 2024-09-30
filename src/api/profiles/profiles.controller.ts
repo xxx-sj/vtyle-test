@@ -12,13 +12,13 @@ export class ProfilesController {
 
   @Get('rated-me')
   @TransformDto(UserProfileResponseDto)
-  async getRaters(@Query() paginationDto: PaginationDto, @Param() userId: string) {
+  async getRaters(@Query() paginationDto: PaginationDto, @Query() userId: string) {
     return await this.service.getRaters(paginationDto, userId);
   }
 
   @Get('rated')
   @TransformDto(UserProfileResponseDto)
-  async getRatedUsers(@Query() paginationDto: PaginationDto, @Param() userId: string) {
+  async getRatedUsers(@Query() paginationDto: PaginationDto, @Query() userId: string) {
     return await this.service.getRatedUsers(paginationDto, userId);
   }
 

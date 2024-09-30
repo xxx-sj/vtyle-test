@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { UserFriendsService } from '@app/api/users/module/friends/user-friends.service';
 import { PaginationDto } from '@app/common/dto/Pagination.dto';
 import { TransformDto } from '@app/common/interceptors/response/decorators/transform-dto.decorator';
@@ -11,7 +11,7 @@ export class UserFriendsController {
 
   @Get()
   @TransformDto(UserFriendResponseDto)
-  async findAll(@Query() paginationDto: PaginationDto, @Param() userId: string) {
+  async findAll(@Query() paginationDto: PaginationDto, @Query('userId') userId: string) {
     return await this.service.findAll(paginationDto, userId);
   }
 
