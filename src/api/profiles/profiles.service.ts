@@ -14,7 +14,7 @@ export class ProfilesService {
     private readonly profileEvaluationRepository: ProfileEvaluationsRepository,
   ) {}
 
-  async getRaters(paginationDto: PaginationDto, @Query() userId: string) {
+  async getRaters(paginationDto: PaginationDto, userId: string) {
     const { page = 1, limit = 10 } = paginationDto;
     const skip = (page - 1) * limit;
 
@@ -29,7 +29,7 @@ export class ProfilesService {
     });
   }
 
-  async getRatedUsers(paginationDto: PaginationDto, @Query() userId: string) {
+  async getRatedUsers(paginationDto: PaginationDto, userId: string) {
     const { page = 1, limit = 10 } = paginationDto;
     const skip = (page - 1) * limit;
 
