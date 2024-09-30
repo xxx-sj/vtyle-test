@@ -7,4 +7,6 @@ export class PaginationDto {
   @Type(() => Number)
   @Max(100, { message: 'Limit cannot exceed 100.' })
   limit?: number;
+
+  userId?: string;
 }

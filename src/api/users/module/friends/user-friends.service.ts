@@ -9,11 +9,11 @@ import { CreateUserFriendDto } from '@app/api/users/module/friends/dto/create-us
 @Injectable()
 export class UserFriendsService {
   constructor(private readonly repository: UserFriendsRepository) {}
-  async findAll(paginationDto: PaginationDto, userId: string) {
+  async findAll(paginationDto: PaginationDto) {
     const { page, limit } = paginationDto;
     const skip = (page - 1) * limit;
 
-    const filter = { userId: new Types.ObjectId(userId) };
+    const filter = { userId: new Types.ObjectId(paginationDto.userId) };
     const options = { skip: skip, limit: limit, sort: { createdAt: 1 } };
     const foreignKey = 'friendId';
     const reference = 'friend';

@@ -11,8 +11,8 @@ export class UserFriendsController {
 
   @Get()
   @TransformDto(UserFriendResponseDto)
-  async findAll(@Query() paginationDto: PaginationDto, @Query('userId') userId: string) {
-    return await this.service.findAll(paginationDto, userId);
+  async findAll(@Query() paginationDto: PaginationDto) {
+    return await this.service.findAll(paginationDto);
   }
 
   //TODO

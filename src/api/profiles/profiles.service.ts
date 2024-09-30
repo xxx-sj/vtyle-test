@@ -14,11 +14,11 @@ export class ProfilesService {
     private readonly profileEvaluationRepository: ProfileEvaluationsRepository,
   ) {}
 
-  async getRaters(paginationDto: PaginationDto, userId: string) {
+  async getRaters(paginationDto: PaginationDto) {
     const { page = 1, limit = 10 } = paginationDto;
     const skip = (page - 1) * limit;
 
-    const filter = { userId: new Types.ObjectId(userId), rating: 5 };
+    const filter = { userId: new Types.ObjectId(paginationDto.userId), rating: 5 };
     const options = { skip: skip, limit: limit, sort: { evaluatedAt: -1 } };
     const foreignKey = 'evaluatorId';
     const reference = 'evaluator';
@@ -29,11 +29,11 @@ export class ProfilesService {
     });
   }
 
-  async getRatedUsers(paginationDto: PaginationDto, userId: string) {
+  async getRatedUsers(paginationDto: PaginationDto) {
     const { page = 1, limit = 10 } = paginationDto;
     const skip = (page - 1) * limit;
 
-    const filter = { evaluatorId: new Types.ObjectId(userId), rating: 5 };
+    const filter = { evaluatorId: new Types.ObjectId(paginationDto.userId), rating: 5 };
     const options = { skip: skip, limit: limit, sort: { evaluatedAt: -1 } };
     const foreignKey = 'userId';
     const reference = 'user';
